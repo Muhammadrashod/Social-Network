@@ -14,8 +14,8 @@ export const LoginPage = () => {
       <StyledLoginPage>
         <Heading headingText="Авторизация" />
         <form>
-        <Input type="tel" placeholder="Номер телефона" errorMessage="Ошибка" />
-        <Input type="text" placeholder="Пароль" errorMessage="Ошибка" />
+        <Input isError={false}  type="tel" placeholder="Номер телефона" errorMessage="Ошибка!" />
+        <Input isError={true}  type="text" placeholder="Пароль" errorMessage="Неверный пароль!" />
           <Button isPrimary buttonText="Войти"/>
         </form>
         <StyledLink to="/" linkText="Забыли пароль?" />

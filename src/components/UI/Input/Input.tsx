@@ -5,13 +5,14 @@ interface InputProps {
   placeholder: string;
   type: string;
   errorMessage?: string;
+  isError: boolean;
 }
 
-export const Input = ({ placeholder, type, errorMessage }: InputProps) => {
+export const Input = ({ placeholder, type, errorMessage, isError }: InputProps) => {
   return (
     <InputContainer>
       <StyledInput type={type} placeholder={placeholder} />
-      <ErrorMessage>{errorMessage}</ErrorMessage>
+      {isError && <ErrorMessage>{errorMessage}</ErrorMessage>}
     </InputContainer>
   );
 };
