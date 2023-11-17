@@ -1,5 +1,4 @@
 import React from "react";
-import "./LoginPage.scss";
 import { Heading } from "../../components/Typography/Heading";
 import { StyledLink } from "../../components/Typography/StyledLink";
 import { Button } from "../../components/UI/Button/Button";
@@ -15,8 +14,8 @@ export const LoginPage = () => {
       <StyledLoginPage>
         <Heading headingText="Авторизация" />
         <form>
-        <Input type="tel" placeholder="Номер телефона" />
-        <Input type="text" placeholder="Пароль" />
+        <Input type="tel" placeholder="Номер телефона" errorMessage="Ошибка" />
+        <Input type="text" placeholder="Пароль" errorMessage="Ошибка" />
           <Button isPrimary buttonText="Войти"/>
         </form>
         <StyledLink to="/" linkText="Забыли пароль?" />

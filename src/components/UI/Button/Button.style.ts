@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components"
 
 type StyledButtonProps = {
-    isPrimary?: boolean,
+    $isPrimary?: boolean,
     isSecondary?: boolean
 }
 
@@ -16,7 +16,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
   width: 100%;
   margin-bottom: 30px;
 
-  ${(props) => props.isPrimary && css`
+  ${(props) => props.$isPrimary && css`
   background-color: ${(props) => props.theme.colors.primeColor};
   color: white;
   `}
@@ -43,4 +43,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
     translate: 0 0;
     box-shadow: none;
   }
+  @media (max-width: 730px) {
+    padding: 10px 12px;
+}
 `

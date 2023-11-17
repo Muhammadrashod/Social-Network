@@ -1,11 +1,17 @@
 import React from "react";
-import { StyledInput } from "./Input.style";
+import { ErrorMessage, InputContainer, StyledInput } from "./Input.style";
 
 interface InputProps {
   placeholder: string;
-  type: string; 
+  type: string;
+  errorMessage?: string;
 }
 
-export const Input = ({ placeholder, type }: InputProps) => {
-  return <StyledInput type={type} placeholder={placeholder} />; // Use the type prop in the input element
+export const Input = ({ placeholder, type, errorMessage }: InputProps) => {
+  return (
+    <InputContainer>
+      <StyledInput type={type} placeholder={placeholder} />
+      <ErrorMessage>{errorMessage}</ErrorMessage>
+    </InputContainer>
+  );
 };

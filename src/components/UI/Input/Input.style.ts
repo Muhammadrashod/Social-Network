@@ -1,5 +1,13 @@
 import styled from "styled-components";
 
+export const InputContainer = styled.div`
+  margin-bottom: 20px;
+`
+
+export const ErrorMessage = styled.p`
+ color: ${(props) => props.theme.colors.red};
+ margin-top: 10px;
+`
 
 export const StyledInput = styled.input`
   border: 1px solid transparent;
@@ -7,7 +15,6 @@ export const StyledInput = styled.input`
   font-family: inherit;
   display: block;
   width: 100%;
-  margin-bottom: 20px;
   border: 2px solid ${(props) => props.theme.colors.disabledBgc};
   background-color: transparent;
   padding: 12px 15px;
@@ -38,19 +45,8 @@ a {
   }
 }
 
-._no-select {
-  -webkit-touch-callout: none; //? iOS Safari
-  -webkit-user-select: none; //? Safari
-  -khtml-user-select: none; //? Konqueror HTML
-  -moz-user-select: none; //? Old versions of Firefox
-  -ms-user-select: none; //? Internet Explorer/Edge
-  user-select: none; //? Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox
-
-  
 @media (max-width: 730px) {
-  input, button {
     padding: 10px 12px;
-  }
 }
-}
+
 `

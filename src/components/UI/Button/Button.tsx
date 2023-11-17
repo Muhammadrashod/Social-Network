@@ -7,7 +7,7 @@ interface ButtonProps {
 }
 
 export const Button = ({ buttonText, isPrimary }: ButtonProps) => {
-  return <StyledButton isPrimary={isPrimary}>
+  return <StyledButton $isPrimary={isPrimary}>
     {buttonText}
     </StyledButton>;
 };
