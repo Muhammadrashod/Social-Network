@@ -19,7 +19,7 @@ export const StyledLoginPage =  styled.div`
     width: 100%;
     text-align: right;
     text-decoration: none;
-    color: var(--gray);
+    color: ${props => props.theme.colors.gray};
 
     &:hover {
       text-decoration: underline;

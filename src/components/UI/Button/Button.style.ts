@@ -10,7 +10,6 @@ export const StyledButton = styled.button<StyledButtonProps>`
   padding: 12px 15px;
   font-size: inherit;
   border-radius: 10px;
-  /* background-color:${(props) => props.theme.colors.primeColor}; */
   color: white;
   transition: 200ms;
   width: 100%;
