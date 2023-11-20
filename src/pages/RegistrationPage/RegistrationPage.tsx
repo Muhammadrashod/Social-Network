@@ -9,19 +9,22 @@ import { useForm, Controller, SubmitHandler } from "react-hook-form";
 
 interface IRegistrationForm {
   username: string;
+  userphone: string;
+  userpassword: string;
 }
 
 export const RegistrationPage = () => {
   const { control, handleSubmit } = useForm<IRegistrationForm>({
     defaultValues: {
       username: "",
-    }
+      userphone:"",
+      userpassword:"",
+    },
   });
 
   const onRegistrationSubmit: SubmitHandler<IRegistrationForm> = (data) => {
     console.log("DATA: ", data);
-    
-  }
+  };
 
   return (
     <Container>
@@ -29,31 +32,45 @@ export const RegistrationPage = () => {
         <Heading headingText="Регистрация" />
         <form onSubmit={handleSubmit(onRegistrationSubmit)}>
           <Controller
-          name="username"
-          control={control}
-            render={() => (
+            name="username"
+            control={control}
+            render={({ field }) => (
               <Input
                 isError={false}
                 type="tel"
                 placeholder="Имя и фамилия"
                 errorMessage="Ошибка!"
+                {...field}
               />
             )}
           />
-
-          <Input
-            isError={false}
-            type="text"
-            placeholder="Номер телефона"
-            errorMessage="Неверный пароль!"
+          <Controller
+           name="userphone"
+           control={control}
+            render={({field }) => (
+              <Input
+                isError={false}
+                type="text"
+                placeholder="Номер телефона"
+                errorMessage="Неверный пароль!"
+                {...field}
+              />
+            )}
           />
-          <Input
-            isError={false}
-            type="password"
-            placeholder="Пароль"
-            errorMessage="Неверный пароль!"
+          <Controller
+           name="userpassword"
+           control={control}
+            render={({ field }) => (
+              <Input
+                isError={false}
+                type="password"
+                placeholder="Пароль"
+                errorMessage="Неверный пароль!"
+                {...field}
+              />
+            )}
           />
-          <Button  isPrimary buttonText="Зарегистрироваться" />
+          <Button type="submit" isPrimary buttonText="Зарегистрироваться" />
         </form>
         <LoginInfo />
       </StyledLoginPage>
