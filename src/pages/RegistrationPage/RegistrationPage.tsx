@@ -26,7 +26,7 @@ export const RegistrationPage = () => {
           />
            <Input
             isError={false}
-            type="text"
+            type="password"
             placeholder="Пароль"
             errorMessage="Неверный пароль!"
           />
