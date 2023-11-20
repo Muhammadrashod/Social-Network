@@ -12,7 +12,7 @@ export const LoginInfo = styled.div`
 
     a {
       display: inline;
-      color: var(--prime-color);
+      color:  ${(props) => props.theme.colors.primeColor};
     }
   }
 
