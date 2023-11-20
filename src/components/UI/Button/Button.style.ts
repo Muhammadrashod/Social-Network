@@ -30,6 +30,8 @@ export const StyledButton = styled.button<StyledButtonProps>`
   &:disabled:hover {
     cursor: default;
     opacity: 0.5;
+    translate: 0px;
+    box-shadow: none;
   }
 
   &:hover {
