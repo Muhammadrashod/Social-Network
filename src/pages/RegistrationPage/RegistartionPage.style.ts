@@ -16,8 +16,6 @@ export const LoginInfo = styled.div`
     }
   }
 
-//enter
-
   p {
     margin-bottom: 30px;
   }
