@@ -4,29 +4,21 @@ import { Button } from "../../components/UI/Button/Button";
 import { Input } from "../../components/UI/Input/Input";
 import { Container } from "../../components/UI/Container/Container.style";
 import { StyledLoginPage } from "../LoginPage/LoginPage.style";
-import { LoginInfo } from "../../components/UI/LoginInfo/LoginInfo";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Span } from "../../components/UI/Span/Span";
 
-interface IRegistrationForm {
-  username: string;
+interface IForgetPasswordForm {
   userphone: string;
-  userpassword: string;
 }
 
 const regexUZB = /^(?:\+998)?(?:\d{2})?(?:\d{7})$/;
 
-const registrationFormSchema = yup.object({
-  username: yup.string().required("Обьязательное поле!"),
+const ForgetPasswordFormSchema = yup.object({
   userphone: yup
     .string()
     .matches(regexUZB, "Введите узбекский номер телефона!")
-    .required("Обьязательное поле!"),
-  userpassword: yup
-    .string()
-    .min(4, "Пароль должен содержать как минимум 4 символа!")
     .required("Обьязательное поле!"),
 });
 
@@ -35,16 +27,14 @@ export const ForgetPasswordPage = () => {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm<IRegistrationForm>({
-    resolver: yupResolver(registrationFormSchema),
+  } = useForm<IForgetPasswordForm>({
+    resolver: yupResolver(ForgetPasswordFormSchema),
     defaultValues: {
-      username: "",
       userphone: "",
-      userpassword: "",
     },
   });
 
-  const onRegistrationSubmit: SubmitHandler<IRegistrationForm> = (data) => {
+  const onRegistrationSubmit: SubmitHandler<IForgetPasswordForm> = (data) => {
     console.log("DATA: ", data);
   };
 
