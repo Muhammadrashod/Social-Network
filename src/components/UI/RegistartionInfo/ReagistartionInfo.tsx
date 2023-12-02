@@ -1,6 +1,11 @@
 import { StyledRegistrationInfo } from "./RegistrationInfo.styles";
 
-export const RegistrationInfo = () => {
+interface IRegForm {
+  question: string;
+  linkLabel: string;
+  linkURL: string;
+}
+export const RegistrationInfo = ({question, linkLabel, linkURL}: IRegForm ) => {
   return (
     <StyledRegistrationInfo>
       <span>
