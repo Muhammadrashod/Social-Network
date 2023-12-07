@@ -258,7 +258,7 @@ const user = useTypedSelector((state) => state.userSlice.user)
           <div className="user__block">
             <img src="./img/users/denis-frolov.jpeg" alt="Denis Frolov" />
             <div className="user__description">
-              <h1 className="user__name">{user?.name}</h1>
+              {/* <h1 className="user__name">{user?.name}</h1> */}
               <div className="user__info">
                 <div className="parameter">
                   <span className="key">Друзья</span>

@@ -447,65 +447,65 @@
   }
 }
 
-.Post {
-  box-shadow: 0 0 10px var(--light-gray);
-  padding: calc(1vw + 11px);
-  background-color: var(--elems-bgc);
-  border-radius: 20px;
-  margin-bottom: 20px;
+// .Post {
+//   box-shadow: 0 0 10px var(--light-gray);
+//   padding: calc(1vw + 11px);
+//   background-color: var(--elems-bgc);
+//   border-radius: 20px;
+//   margin-bottom: 20px;
 
-  position: relative;
+//   position: relative;
 
-  &._liked {
-    .icon-wrapper {
-      .icon-like {
-        fill: var(--red);
-        stroke: 0;
-        stroke-width: 0;
-      }
+//   &._liked {
+//     .icon-wrapper {
+//       .icon-like {
+//         fill: var(--red);
+//         stroke: 0;
+//         stroke-width: 0;
+//       }
 
-      .likes-count {
-        color: var(--red);
-      }
-    }
-  }
+//       .likes-count {
+//         color: var(--red);
+//       }
+//     }
+//   }
 
-  &._marked {
-    .icon-wrapper {
-      .icon-mark {
-        fill: var(--prime-color);
-        stroke: 0;
-        stroke-width: 0;
-      }
-    }
-  }
+//   &._marked {
+//     .icon-wrapper {
+//       .icon-mark {
+//         fill: var(--prime-color);
+//         stroke: 0;
+//         stroke-width: 0;
+//       }
+//     }
+//   }
 
-  .UserElem {
-    cursor: default;
-    padding: 0;
-    margin-bottom: 30px;
+//   .UserElem {
+//     cursor: default;
+//     padding: 0;
+//     margin-bottom: 30px;
 
-    &:hover {
-      background-color: initial;
-      scale: 1;
-    }
+//     &:hover {
+//       background-color: initial;
+//       scale: 1;
+//     }
 
-    &::after {
-      display: none; //? нижняя полоса в списке
-    }
+//     &::after {
+//       display: none; //? нижняя полоса в списке
+//     }
 
-    img {
-      flex: 0 0 60px;
-      height: 60px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-  }
+//     img {
+//       flex: 0 0 60px;
+//       height: 60px;
+//       border-radius: 50%;
+//       object-fit: cover;
+//     }
+//   }
 
-  &__text {
-    margin-bottom: 20px;
-  }
-}
+//   &__text {
+//     margin-bottom: 20px;
+//   }
+// }
 
 .icon-more {
   cursor: pointer;

@@ -8,38 +8,25 @@ import { Button } from "../../components/UI/Button/Button";
 import { Container } from "../../components/UI/Container/Container.style";
 import { Input } from "../../components/UI/Input/Input";
 import { StyledLoginPage } from "./LoginPage.style";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../store/store";
-import { changeUser } from "../../store/userSlice";
+import { useDispatch } from "react-redux";
+import { changeUser } from "../../store/slices/userSlice";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { useLoginUserMutation } from "../../store/API/authApi";
 
 interface ILoginForm {
-  userphone: string;
+  useremail: string;
   userpassword: string;
 }
 
-const regexUZB = /^(?:\+998)?(?:\d{2})?(?:\d{7})$/;
-
 const loginFormSchema = yup.object({
-  userphone: yup
-    .string()
-    .matches(regexUZB, "Введите узбекский номер телефона!")
-    .required("Обязательное поле!"),
+  useremail: yup.string().email().required("Обязательное поле!"),
   userpassword: yup
     .string()
     .min(4, "Пароль должен содержать как минимум 4 символа!")
     .required("Обязательное поле!"),
 });
-
-const mockUser = {
-  mail: "vasya@mail.com",
-  phone_number: "1234567",
-  user_id: 1,
-  name: "Vasya Petrov",
-  reg_date: new Date().toISOString,
-  city: "Andijan",
-};
 
 export const LoginPage = () => {
   const {
@@ -49,25 +36,28 @@ export const LoginPage = () => {
   } = useForm({
     resolver: yupResolver(loginFormSchema),
     defaultValues: {
-      userphone: "",
+      useremail: "",
       userpassword: "",
     },
   });
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const user = useSelector((state: RootState) => state.userSlice.user);
+  const user = useTypedSelector((state) => state.userSlice.user);
+
+  const [loginUser, { data: userData }] = useLoginUserMutation();
 
   const onLoginSubmit: SubmitHandler<ILoginForm> = (data) => {
-    dispatch(changeUser(mockUser));
+    loginUser({ email: data.useremail, password: data.userpassword });
+    dispatch(changeUser(data));
   };
 
   useEffect(() => {
-    console.log("USER: ", user);
+    // console.log("USER: ", user);
 
-    if (user?.user_id) {
+    if (userData?.user_id) {
       navigate("/profile");
     }
-  }, [user]);
+  }, [userData, navigate]);
 
   return (
     <Container>
@@ -75,14 +65,14 @@ export const LoginPage = () => {
         <Heading headingText="Авторизация" />
         <form onSubmit={handleSubmit(onLoginSubmit)}>
           <Controller
-            name="userphone"
+            name="useremail"
             control={control}
             render={({ field }) => (
               <Input
-                isError={errors.userphone ? true : false}
-                errorMessage={errors.userphone?.message}
+                isError={errors.useremail ? true : false}
+                errorMessage={errors.useremail?.message}
                 type="tel"
-                placeholder="Номер телефона"
+                placeholder="Почта"
                 {...field}
               />
             )}
