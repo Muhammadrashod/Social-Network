@@ -30,16 +30,17 @@ export const StyledPost = styled.div<StyledPostProps>`
       }
     `}
 
-  ${(props) =>
+
+    ${(props) =>
     props.$isMarked &&
     css`
-.icon-wrapper {
-    .icon-mark {
-        fill: ${(props) => props.theme.colors.primeColor};
-        stroke: 0;
-    }
-}
-}
+      .icon-wrapper {
+        .icon-mark {
+          fill: ${(props) => props.theme.colors.primeColor};
+          stroke: 0;
+        }
+      }
+    `}
 
   .UserElem {
     cursor: default;
@@ -65,5 +66,14 @@ export const StyledPost = styled.div<StyledPostProps>`
 
   &__text {
     margin-bottom: 20px;
-`}
+  }
 `;
+
+export const PostSettingsBox = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 8px;
+  background-color: #fefefe;
+`;
+

@@ -62,22 +62,21 @@ export const RegistrationPage = () => {
     },
   });
 
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const user = useTypedSelector((state) => state.userSlice.user);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const user = useTypedSelector((state) => state.userSlice.user);
 
-    const onRegistrationSubmit: SubmitHandler<IRegistrationForm> = (data) => {
-      dispatch(changeUser(mockUser));
-    };
+  const onRegistrationSubmit: SubmitHandler<IRegistrationForm> = (data) => {
+    dispatch(changeUser(mockUser));
+  };
 
-    useEffect(() => {
-      console.log("USER: ", user);
+  useEffect(() => {
+    console.log("USER: ", user);
 
-      if (user?.user_id) {
-        navigate("/profile");
-      }
-    }, [user]);
-
+    if (user?.user_id) {
+      navigate("/profile");
+    }
+  }, [user]);
   return (
     <Container>
       <StyledLoginPage>

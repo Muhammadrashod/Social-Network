@@ -1,36 +1,18 @@
-import React, { useState } from "react";
-import { StyledPost } from "./Post.style";
-import { PostSetings } from "./PostSettings";
+import React from "react";
 
-interface IPostProps {
-  isLiked?: boolean;
-  isMarked?: boolean;
-  postText?: string;
-  userName?: string;
-  regDate?: string;
-}
-
-export const Post = ({
-  isLiked,
-  isMarked,
-  postText,
-  userName,
-  regDate,
-}: IPostProps) => {
-  const [isSettingsOpen, setIsSettingsOpen] = useState<boolean>(false);
-
+const LikedMarked = () => {
   return (
-    <StyledPost $isLiked={isLiked} $isMarked={isMarked}>
+    <div className="Post _liked _marked">
       <div className="UserElem">
         <img src="./img/users/aleksandr-maykov.jpeg" alt="User" />
         <div className="user__description">
           <a href="#" className="main__text">
-            {userName}
+            Александр Майков
           </a>
-          <p className="secondary__text">{regDate}</p>
+          <p className="secondary__text">Сегодня 9:37</p>
         </div>
       </div>
-      <p className="Post__text">{postText}</p>
+      <p className="Post__text">Момент умиротворения и спокойствия</p>
       <div className="media-container">
         <img
           className="media__item"
@@ -144,7 +126,6 @@ export const Post = ({
         className="icon icon-more"
         viewBox="0 0 25 5"
         xmlns="http://www.w3.org/2000/svg"
-        onClick={() => setIsSettingsOpen(!isSettingsOpen)}
       >
         <g id="more">
           <circle id="ellipse" cx="22.5" cy="2.5" r="2.5" />
@@ -152,9 +133,8 @@ export const Post = ({
           <circle id="ellipse_3" cx="2.5" cy="2.5" r="2.5" />
         </g>
       </svg>
-      {isSettingsOpen && (
-        <PostSetings onDeleteClick={() => {}} onEditClick={() => {}} />
-      )}
-    </StyledPost>
+    </div>
   );
 };
+
+export default LikedMarked;

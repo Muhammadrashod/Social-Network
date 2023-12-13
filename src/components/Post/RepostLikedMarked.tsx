@@ -1,67 +1,39 @@
-import React, { useState } from "react";
-import { StyledPost } from "./Post.style";
-import { PostSetings } from "./PostSettings";
+import React from "react";
 
-interface IPostProps {
-  isLiked?: boolean;
-  isMarked?: boolean;
-  postText?: string;
-  userName?: string;
-  regDate?: string;
-}
-
-export const Post = ({
-  isLiked,
-  isMarked,
-  postText,
-  userName,
-  regDate,
-}: IPostProps) => {
-  const [isSettingsOpen, setIsSettingsOpen] = useState<boolean>(false);
-
+const RepostLikedMarked = () => {
   return (
-    <StyledPost $isLiked={isLiked} $isMarked={isMarked}>
-      <div className="UserElem">
-        <img src="./img/users/aleksandr-maykov.jpeg" alt="User" />
+    <div className="Post Repost _liked _marked">
+      <div className="UserElem Repost__owner">
+        <img src="./img/users/mark-krahmalev.jpeg" alt="User" />
         <div className="user__description">
           <a href="#" className="main__text">
-            {userName}
+            Марк Крахмалев
           </a>
-          <p className="secondary__text">{regDate}</p>
+          <p className="secondary__text">20 марта 23:31</p>
         </div>
       </div>
-      <p className="Post__text">{postText}</p>
-      <div className="media-container">
-        <img
-          className="media__item"
-          src="./img/post/nature-1.png"
-          alt="Post Item"
-        />
-        <img
-          className="media__item"
-          src="./img/post/nature-2.png"
-          alt="Post Item"
-        />
-        <img
-          className="media__item"
-          src="./img/post/nature-3.png"
-          alt="Post Item"
-        />
-        <img
-          className="media__item"
-          src="./img/post/nature-4.png"
-          alt="Post Item"
-        />
-        <img
-          className="media__item"
-          src="./img/post/nature-5.png"
-          alt="Post Item"
-        />
-        <img
-          className="media__item"
-          src="./img/post/nature-6.png"
-          alt="Post Item"
-        />
+      <div className="Repost__wrapper">
+        <div className="UserElem">
+          <img src="./img/users/aleksandr-maykov.jpeg" alt="User" />
+          <div className="user__description">
+            <a href="#" className="main__text">
+              Александр Майков
+            </a>
+            <p className="secondary__text">Сегодня 9:37</p>
+          </div>
+        </div>
+        <div className="media-container">
+          <img
+            className="media__item"
+            src="./img/post/garnet-man.png"
+            alt="Post Item"
+          />
+          <img
+            className="media__item"
+            src="./img/post/garnet.png"
+            alt="Post Item"
+          />
+        </div>
       </div>
       <div className="PostControls">
         <div className="icon-wrapper like">
@@ -144,7 +116,6 @@ export const Post = ({
         className="icon icon-more"
         viewBox="0 0 25 5"
         xmlns="http://www.w3.org/2000/svg"
-        onClick={() => setIsSettingsOpen(!isSettingsOpen)}
       >
         <g id="more">
           <circle id="ellipse" cx="22.5" cy="2.5" r="2.5" />
@@ -152,9 +123,8 @@ export const Post = ({
           <circle id="ellipse_3" cx="2.5" cy="2.5" r="2.5" />
         </g>
       </svg>
-      {isSettingsOpen && (
-        <PostSetings onDeleteClick={() => {}} onEditClick={() => {}} />
-      )}
-    </StyledPost>
+    </div>
   );
 };
+
+export default RepostLikedMarked;
