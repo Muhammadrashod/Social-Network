@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { baseUrl } from "../../utils/baseUrl";
 
-interface PostItem {
+export interface PostItem {
   main_text: string;
   user_id: number;
   id: number;
@@ -28,6 +28,28 @@ export interface IGetPostItemByIdResponse {
   message: PostItem;
 }
 
+export interface IAddNewPostPayload {
+  user_id: number;
+  main_text: string;
+}
+
+export interface IAddNewPostResponse {
+  status: number;
+  post_id: number;
+}
+
+export interface IEditPostPayload {
+  post_id: number;
+  new_text: string;
+}
+export interface IEditPostResponse {
+  status: number;
+  message: string;
+}
+
+export interface IDeletePostPayload {}
+export interface IDeletePostResponse {}
+
 export const postApi = createApi({
   reducerPath: "postApi",
   baseQuery: fetchBaseQuery({ baseUrl: baseUrl }),
@@ -37,6 +59,26 @@ export const postApi = createApi({
     }),
     getPostById: builder.query<IGetPostItemByIdResponse, string>({
       query: (postId: string) => `/post?post_id=${postId}`,
+    }),
+    addNewPost: builder.mutation<IAddNewPostResponse, IAddNewPostPayload>({
+      query: (payload) => ({
+        url: "post",
+        method: "POST",
+        body: payload,
+      }),
+    }),
+    editPost: builder.mutation<IEditPostResponse, IEditPostPayload>({
+      query: (payload) => ({
+        url: "/post",
+        method: "POST",
+        body: payload,
+      }),
+    }),
+    deletePost: builder.mutation<any, any>({
+      query: (post_id: string) => ({
+        url: `/post/?post_id=${post_id}`,
+        method: "DELETE",
+      }),
     }),
   }),
 });

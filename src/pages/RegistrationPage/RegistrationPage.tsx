@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { changeUser } from "../../store/slices/userSlice";
+import { useRegisterUserMutation } from "../../store/API/authApi";
 
 interface IRegistrationForm {
   username: string;
@@ -37,15 +38,6 @@ const registrationFormSchema = yup.object({
   usercity: yup.string().required("Обьязательное поле!"),
 });
 
-const mockUser = {
-  mail: "vasya@mail.com",
-  phone_number: "1234567",
-  user_id: 1,
-  name: "Vasya Petrov",
-  reg_date: new Date().toISOString,
-  city: "Andijan",
-};
-
 export const RegistrationPage = () => {
   const {
     control,
@@ -66,17 +58,26 @@ export const RegistrationPage = () => {
   const navigate = useNavigate();
   const user = useTypedSelector((state) => state.userSlice.user);
 
+  const [RegisterUser, { data: userData }] = useRegisterUserMutation();
+
   const onRegistrationSubmit: SubmitHandler<IRegistrationForm> = (data) => {
-    dispatch(changeUser(mockUser));
+    RegisterUser({
+      name: data.username,
+      phone_number: data.userphone,
+      password: data.userpassword,
+      email: data.useremail,
+      user_city: data.usercity,
+    });
+    dispatch(changeUser(data));
   };
 
   useEffect(() => {
-    console.log("USER: ", user);
+    // console.log("USER: ", user);
 
-    if (user?.user_id) {
-      navigate("/profile");
+    if (userData?.user_id) {
+      navigate("/");
     }
-  }, [user]);
+  }, [userData,navigate]);
   return (
     <Container>
       <StyledLoginPage>
@@ -101,7 +102,7 @@ export const RegistrationPage = () => {
             render={({ field }) => (
               <Input
                 isError={errors.useremail ? true : false}
-                type="tel"
+                type="email"
                 placeholder="Почта"
                 errorMessage={errors.useremail?.message}
                 {...field}
@@ -114,7 +115,7 @@ export const RegistrationPage = () => {
             render={({ field }) => (
               <Input
                 isError={errors.userphone ? true : false}
-                type="text"
+                type="tel"
                 placeholder="Номер телефона"
                 errorMessage={errors.userphone?.message}
                 {...field}
