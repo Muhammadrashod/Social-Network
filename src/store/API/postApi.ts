@@ -83,4 +83,8 @@ export const postApi = createApi({
   }),
 });
 
-export const { useLazyGetPostListQuery, useLazyGetPostByIdQuery } = postApi;
+export const {
+  useLazyGetPostListQuery,
+  useLazyGetPostByIdQuery,
+  useAddNewPostMutation,
+} = postApi;

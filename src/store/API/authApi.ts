@@ -9,7 +9,7 @@ interface IRegisterUserPayload {
   user_city: string;
 }
 
-interface IRegisterUserResponse {
+export interface IRegisterUserResponse {
   status: number;
   user_id: number;
 }
@@ -19,7 +19,7 @@ interface ILoginUserPayload {
   password: string;
 }
 
-interface ILoginUserResponse extends IRegisterUserResponse {}
+export interface ILoginUserResponse extends IRegisterUserResponse {}
 
 interface IGetUserResponse {
   status: number;
