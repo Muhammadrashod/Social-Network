@@ -5,11 +5,12 @@ type PostSettingsProps = {
   onEditClick: () => void;
   onDeleteClick: () => void;
 };
+
 export const PostSetings = ({ onEditClick, onDeleteClick }: PostSettingsProps) => {
   return (
     <PostSettingsBox>
-      <span>Изменить</span>
-      <span>Удалить</span>
+      <span onClick={onEditClick}>Изменить</span>
+      <span onClick={onDeleteClick}>Удалить</span>
     </PostSettingsBox>
   );
 };
