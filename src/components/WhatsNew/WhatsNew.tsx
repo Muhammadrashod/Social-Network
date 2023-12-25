@@ -1,8 +1,20 @@
 import { useState } from "react";
 import { AddNewPostForm } from "../../pages/PostPage/AddNewPostForm";
 
-export const WhatsNew = () => {
+type WhatsNewProps = {
+  onNewPostAdded?: () => void;
+};
+
+export const WhatsNew = ({ onNewPostAdded }: WhatsNewProps) => {
   const [isAddPostModalOpen, setIsAddPostModalOpen] = useState<boolean>(false);
+
+  const handleCloseModal = () => {
+    setIsAddPostModalOpen(false);
+    if (typeof onNewPostAdded === "function") {
+      onNewPostAdded();
+    }
+  };
+
   return (
     <div className="WhatsNew">
       <img src="./img/users/arina-volkova.jpeg" alt="User" />
@@ -51,7 +63,7 @@ export const WhatsNew = () => {
       </div>
       <AddNewPostForm
         isOpen={isAddPostModalOpen}
-        onCloseModal={() => setIsAddPostModalOpen(false)}
+        onCloseModal={handleCloseModal}
       />
     </div>
   );

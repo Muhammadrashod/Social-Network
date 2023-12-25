@@ -35,7 +35,10 @@ const AddNewPostFormSchema = yup.object({
   mainText: yup.string().required("Это Обьязательное поле"),
 });
 
-export const AddNewPostForm = ({ isOpen }: AddNewPostFormProps) => {
+export const AddNewPostForm = ({
+  isOpen,
+  onCloseModal,
+}: AddNewPostFormProps) => {
   const {
     control,
     handleSubmit,
@@ -49,7 +52,8 @@ export const AddNewPostForm = ({ isOpen }: AddNewPostFormProps) => {
 
   const userId = useUserId();
 
-  const [addNewPost, { data: postData }] = useAddNewPostMutation();
+  const [addNewPost, { data: postData, isLoading, isSuccess }] =
+    useAddNewPostMutation();
 
   const handleAddPostFormSubmit: SubmitHandler<{ mainText: string }> = (
     formData
@@ -61,6 +65,11 @@ export const AddNewPostForm = ({ isOpen }: AddNewPostFormProps) => {
       };
 
       addNewPost(payload);
+      onCloseModal();
+    }
+
+    if (isSuccess) {
+      onCloseModal();
     }
   };
 
@@ -86,8 +95,13 @@ export const AddNewPostForm = ({ isOpen }: AddNewPostFormProps) => {
           />{" "}
         </PostFormContent>
         <PostFormFooter>
-          <Button type="submit" buttonText="Сохранить" isPrimary />
-          <Button buttonText="Отменить" isPrimary />
+          <Button
+            disabled={isLoading}
+            type="submit"
+            buttonText="Сохранить"
+            isPrimary
+          />
+          <Button disabled={isLoading} buttonText="Отменить" isPrimary />
         </PostFormFooter>
       </PostFormBox>
     </Modal>

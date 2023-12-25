@@ -2,6 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { baseUrl } from "../../utils/baseUrl";
 
 export interface PostItem {
+  [x: string]: any;
   main_text: string;
   user_id: number;
   id: number;
@@ -87,4 +88,5 @@ export const {
   useLazyGetPostListQuery,
   useLazyGetPostByIdQuery,
   useAddNewPostMutation,
+  useDeletePostMutation,
 } = postApi;

@@ -30,8 +30,7 @@ export const StyledPost = styled.div<StyledPostProps>`
       }
     `}
 
-
-    ${(props) =>
+  ${(props) =>
     props.$isMarked &&
     css`
       .icon-wrapper {
@@ -68,12 +67,26 @@ export const StyledPost = styled.div<StyledPostProps>`
     margin-bottom: 20px;
   }
 `;
-
 export const PostSettingsBox = styled.div`
   position: absolute;
-  top: 0;
-  right: 0;
+  top: -8px;
+  right: -8px;
   border-radius: 8px;
-  background-color: #fefefe;
-`;
+  background: #fefefe;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+  display: flex;
+  flex-flow: column;
+  padding: 16px;
 
+  span {
+    cursor: pointer;
+    margin-bottom: 8px; 
+    &:last-child {
+      margin-bottom: 0; 
+    }
+
+    &:hover {
+      color: #526ed3; 
+    }
+  }
+`;

@@ -25,6 +25,8 @@ export const PostPage = () => {
           postText={data.message.main_text}
           userName={data.message.user_fk.name}
           regDate={data.message.reg_date}
+          photos={data.message.photos}
+          postId={postId as string}
         />
       )}
     </Container>
