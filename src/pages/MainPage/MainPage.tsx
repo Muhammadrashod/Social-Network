@@ -60,11 +60,7 @@ export const MainPage = () => {
               .map((post) => (
                 <Post
                   key={post.id}
-                  postText={post.main_text}
-                  regDate={post.reg_date}
-                  userName={post.user_fk.name}
-                  photos={post.photos}
-                  postId={post.id}
+                  post={post}
                   onPostDelete={() => fetchTrigger(null)}
                   onPostEditClick={() => handleEditPostClick(post)}
                 />

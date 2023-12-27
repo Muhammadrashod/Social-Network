@@ -22,11 +22,7 @@ export const PostPage = () => {
       {isLoading && <h1>Идет Загрузка...</h1>}
       {data && (
         <Post
-          postText={data.message.main_text}
-          userName={data.message.user_fk.name}
-          regDate={data.message.reg_date}
-          photos={data.message.photos}
-          postId={postId as string}
+       post={data.message}
         />
       )}
     </Container>

@@ -6,7 +6,7 @@ export interface PostItem {
   main_text: string;
   user_id: number;
   id: number;
-  reg_date: string;
+  reg_date: string | Date;
   user_fk: {
     email: string;
     phone_number: string;

@@ -73,20 +73,36 @@ export const PostSettingsBox = styled.div`
   right: -8px;
   border-radius: 8px;
   background: #fefefe;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-flow: column;
   padding: 16px;
 
   span {
     cursor: pointer;
-    margin-bottom: 8px; 
+    margin-bottom: 8px;
     &:last-child {
-      margin-bottom: 0; 
+      margin-bottom: 0;
     }
 
     &:hover {
-      color: #526ed3; 
+      color: #526ed3;
     }
   }
+`;
+
+export const PostCommentsBox = styled.div`
+  display: flex;
+  flex-flow: column;
+`;
+
+export const StyledTextarea = styled.textarea`
+  margin-top: 24px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  resize: none;
+  box-sizing: border-box;
+  font-size: 16px;
 `;
