@@ -49,7 +49,11 @@ export interface IEditPostResponse {
 }
 
 export interface IDeletePostPayload {}
-export interface IDeletePostResponse {}
+
+export interface IDeletePostResponse {
+  status: number;
+  message: string;
+}
 
 export const postApi = createApi({
   reducerPath: "postApi",
@@ -75,7 +79,7 @@ export const postApi = createApi({
         body: payload,
       }),
     }),
-    deletePost: builder.mutation<any, any>({
+    deletePost: builder.mutation<IDeletePostResponse, any>({
       query: (post_id: string) => ({
         url: `/post/?post_id=${post_id}`,
         method: "DELETE",
@@ -89,4 +93,5 @@ export const {
   useLazyGetPostByIdQuery,
   useAddNewPostMutation,
   useDeletePostMutation,
+  useEditPostMutation,
 } = postApi;

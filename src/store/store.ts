@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import userSlice from "./slices/userSlice";
 import { authApi } from "./API/authApi";
 import { postApi } from "./API/postApi";
-
+  
 export const store = configureStore({
   reducer: {
     userSlice,

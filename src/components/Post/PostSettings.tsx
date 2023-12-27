@@ -2,7 +2,7 @@ import React from "react";
 import { PostSettingsBox } from "./Post.style";
 
 type PostSettingsProps = {
-  onEditClick: () => void;
+  onEditClick?: () => void;
   onDeleteClick: () => void;
 };
 
